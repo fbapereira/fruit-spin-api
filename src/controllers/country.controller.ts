@@ -6,7 +6,7 @@ import { Country } from "../models/country.model"
 const getCountry = async (req: Request, res: Response) => {
     try {
         let countryName = req.params.countryName;
-        let result: AxiosResponse = await axios.get(`https://restcountries.eu/rest/v2/name/${countryName}?fullText=true`);
+        let result: AxiosResponse = await axios.get(`${process.env.COUNTRY_API_URL}/name/${countryName}?fullText=true`);
         let country: Country = result.data[0];
         res.status(200).json(country);
     } catch (err) {
@@ -17,7 +17,7 @@ const getCountry = async (req: Request, res: Response) => {
 const getCountries = async (req: Request, res: Response) => {
     try {
         let countryName = req.params.countryName;
-        let result: AxiosResponse = await axios.get(`https://restcountries.eu/rest/v2/name/${countryName}`);
+        let result: AxiosResponse = await axios.get(`${process.env.COUNTRY_API_URL}/name/${countryName}`);
         let country: Country[] = result.data;
         res.status(200).json(country);
     } catch (err) {
@@ -27,7 +27,7 @@ const getCountries = async (req: Request, res: Response) => {
 
 const getAllCountries = async (req: Request, res: Response) => {
     try {
-        let result: AxiosResponse = await axios.get(`https://restcountries.eu/rest/v2/all`);
+        let result: AxiosResponse = await axios.get(`${process.env.COUNTRY_API_URL}/v2/all`);
         let country: Country[] = result.data;
         res.status(200).json(country);
     } catch (err) {
