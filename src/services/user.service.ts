@@ -1,24 +1,29 @@
-import { decodeBase64 } from "bcryptjs";
-import firebase from "firebase";
-import firebaseConfig from "../configs/firebase.config";
+import { hashSync } from 'bcryptjs';
+import firebase from 'firebase';
 
+import { appConfig } from '../configs/app.config';
 
+const getDB = () => firebase.firestore();
 
-export class UserService {
-    private db: any;
-    constructor() {
-    }
+const create = async (name: string, email: string, password: string): Promise<void> => {
+  const wallet = appConfig.defaultWelcomeCoins;
+  password = hashSync(password);
+  await getDB().collection('users').add({ name, email, password, wallet });
+};
 
-    public async alterWallet(userId: string, amount: number): Promise<boolean> {
-        this.db = firebase.firestore();
-        const user = await this.db.collection('users').doc(userId).get();
-        const wallet = user.data().wallet || 0;
+const alterWallet = async (userId: string, amount: number): Promise<boolean> => {
+  const user = await getDB().collection('users').doc(userId).get();
+  const wallet = user.data().wallet + amount;
 
-        if(wallet + amount < 0) {
-            return false;
-        }
+  if (wallet < 0) return false;
 
-        this.db.doc(`users/${ userId }`).set({ wallet: wallet + amount }, {merge: true});
-        return true;
-    }
-}
+  getDB().doc(`users/${userId}`).set({ wallet }, { merge: true });
+  return true;
+};
+
+const verifyEmailExistence = async (email: string): Promise<boolean> => {
+  const user = await getDB().collection('users').where('email', '==', email).get();
+  return !user.empty;
+};
+
+export default { alterWallet, verifyEmailExistence, create };

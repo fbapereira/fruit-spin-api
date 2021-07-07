@@ -1,4 +1,5 @@
 import express from 'express';
+
 import slotMachineController from '../controllers/slot-machine.controller';
 
 const router = express.Router();
