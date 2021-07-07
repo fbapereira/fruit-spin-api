@@ -3,11 +3,12 @@ import { Request, Response } from 'express';
 
 import { Country } from "../models/country.model"
 
+const url = "https://restcountries.eu/rest/v2";
 const getCountry = async (req: Request, res: Response) => {
     try {
-        let countryName = req.params.countryName;
-        let result: AxiosResponse = await axios.get(`${process.env.COUNTRY_API_URL}/name/${countryName}?fullText=true`);
-        let country: Country = result.data[0];
+        const { countryName } = req.params;
+        const result: AxiosResponse = await axios.get(`${url}/name/${countryName}?fullText=true`);
+        const country: Country = result.data[0];
         res.status(200).json(country);
     } catch (err) {
         handleError(err, res);
@@ -16,9 +17,9 @@ const getCountry = async (req: Request, res: Response) => {
 
 const getCountries = async (req: Request, res: Response) => {
     try {
-        let countryName = req.params.countryName;
-        let result: AxiosResponse = await axios.get(`${process.env.COUNTRY_API_URL}/name/${countryName}`);
-        let country: Country[] = result.data;
+        const { countryName } = req.params;
+        const result: AxiosResponse = await axios.get(`${url}/name/${countryName}`);
+        const country: Country[] = result.data;
         res.status(200).json(country);
     } catch (err) {
         handleError(err, res);
@@ -27,8 +28,8 @@ const getCountries = async (req: Request, res: Response) => {
 
 const getAllCountries = async (req: Request, res: Response) => {
     try {
-        let result: AxiosResponse = await axios.get(`${process.env.COUNTRY_API_URL}/v2/all`);
-        let country: Country[] = result.data;
+        const result: AxiosResponse = await axios.get(`${url}/all`);
+        const country: Country[] = result.data;
         res.status(200).json(country);
     } catch (err) {
         handleError(err, res);
