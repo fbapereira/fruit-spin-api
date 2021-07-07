@@ -3,6 +3,7 @@ import express, { Express } from 'express';
 import morgan from 'morgan';
 import countryRouter from './routers/country.router';
 import userRouter from './routers/user.router';
+import slotMachineRouter from './routers/slot-machine.router';
 
 const router: Express = express();
 
@@ -22,6 +23,7 @@ router.use((req, res, next) => {
 
 router.use('/', countryRouter);
 router.use('/', userRouter);
+router.use('/', slotMachineRouter);
 
 router.use((req, res, next) => {
     const error = new Error('not found');

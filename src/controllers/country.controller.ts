@@ -1,13 +1,12 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Request, Response } from 'express';
 
-import { Country } from "../models/country.model"
+import { appConfig } from '../configs/app.config';
+import { Country } from "../models/country.model";
 
-const url = "https://restcountries.eu/rest/v2";
-const getCountry = async (req: Request, res: Response) => {
+const getCountry = async ({ params: { countryName } }: Request, res: Response) => {
     try {
-        const { countryName } = req.params;
-        const result: AxiosResponse = await axios.get(`${url}/name/${countryName}?fullText=true`);
+        const result: AxiosResponse = await axios.get(`${ appConfig.url }/name/${countryName}?fullText=true`);
         const country: Country = result.data[0];
         res.status(200).json(country);
     } catch (err) {
@@ -15,10 +14,9 @@ const getCountry = async (req: Request, res: Response) => {
     }
 }
 
-const getCountries = async (req: Request, res: Response) => {
+const getCountries = async ({ params: { countryName } }: Request, res: Response) => {
     try {
-        const { countryName } = req.params;
-        const result: AxiosResponse = await axios.get(`${url}/name/${countryName}`);
+        const result: AxiosResponse = await axios.get(`${ appConfig.url }/name/${countryName}`);
         const country: Country[] = result.data;
         res.status(200).json(country);
     } catch (err) {
@@ -28,7 +26,7 @@ const getCountries = async (req: Request, res: Response) => {
 
 const getAllCountries = async (req: Request, res: Response) => {
     try {
-        const result: AxiosResponse = await axios.get(`${url}/all`);
+        const result: AxiosResponse = await axios.get(`${ appConfig.url }/all`);
         const country: Country[] = result.data;
         res.status(200).json(country);
     } catch (err) {
