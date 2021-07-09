@@ -2,7 +2,7 @@ import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Request, Response } from 'express';
 
 import { appConfig } from '../configs/app.config';
-import { Country } from '@common/types/country.model';
+import { Country } from '../models/country.model';
 
 const getCountry = async ({ params: { countryName } }: Request, res: Response): Promise<Response> => {
   try {

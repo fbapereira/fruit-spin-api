@@ -1,4 +1,4 @@
-import { SlotMachine, SlotMachineItem } from '@common/types/slot-machine.model';
+import { SlotMachine, SlotMachineItem } from '../models/slot-machine.model';
 
 import slotMachineRewardConfig from '../configs/slot-machine-reward.config';
 import slotMachineConfig from '../configs/slot-machine.config';
