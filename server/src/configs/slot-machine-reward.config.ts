@@ -1,5 +1,5 @@
-import { SlotMachineReward } from '../models/slot-machine-reawrd.model';
-import { SlotMachineItem } from '../models/slot-machine.model';
+import { SlotMachineReward } from '@common/types/slot-machine-reawrd.model';
+import { SlotMachineItem } from '@common/types/slot-machine.model';
 
 const slotMachineRewardConfig: SlotMachineReward[] = [
   {

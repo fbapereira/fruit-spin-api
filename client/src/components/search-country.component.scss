@@ -1,0 +1,9 @@
+.search-area {
+    margin: 5rem auto;
+    max-width: 30rem;
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+    }
+}
