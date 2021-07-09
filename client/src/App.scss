@@ -57,6 +57,7 @@ body {
     color: $off-white;
     border-radius: .3rem;
     cursor: pointer;
+    text-decoration: none;
 
     &.green {
         background-color: $green;

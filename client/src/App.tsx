@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CountryState } from "./reducers/country.reducer";
 import { Header } from "./components/header.component";
 import { getAllCountries, searchCountryFullName, searchCountryPartialName } from "./actions/country.actions";
+import { SlotMachine } from './components/slot-machine.component';
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,7 +38,7 @@ function App() {
       <Header />
       <Switch>
           <Route path="/casino">
-            <p>roullete</p>
+            <SlotMachine />
           </Route>
           <Route path="/">
           <SearchCountry loadAllCountries={ loadAllCountries} loadCountriesByFullName={loadCountriesByFullName} loadCountriesByPartialName={loadCountriesByPartialName} />
