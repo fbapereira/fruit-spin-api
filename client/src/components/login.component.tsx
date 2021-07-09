@@ -1,5 +1,6 @@
-import { ChangeEvent, FormEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./login.component.scss";
+
 
 export const Login = () => {
   const [email, setEmail] = useState("");

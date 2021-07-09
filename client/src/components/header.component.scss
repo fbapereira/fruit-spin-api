@@ -7,6 +7,7 @@ $green: #32A350;
         width: 80%;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
 
         .button {
             margin-left: 1rem;
@@ -14,6 +15,11 @@ $green: #32A350;
             &.open {
                 border-radius: .3rem .3rem 0 0;
             }
+        }
+
+        .coin {
+            width: 2rem;
+            margin: auto 2rem auto 1rem;
         }
     }
 
