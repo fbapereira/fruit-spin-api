@@ -5,6 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { CountryState } from "./reducers/country.reducer";
 import { Header } from "./components/header.component";
 import { getAllCountries, searchCountryFullName, searchCountryPartialName } from "./actions/country.actions";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const countries = useSelector<CountryState, CountryState["countries"]>(
@@ -26,19 +32,27 @@ function App() {
 
 
   return (
-    <div>
+    <Router>
+
       <Header />
-      <SearchCountry loadAllCountries={ loadAllCountries} loadCountriesByFullName={loadCountriesByFullName} loadCountriesByPartialName={loadCountriesByPartialName} />
-      <div className="search-result">
-        {countries.map((country) => (
-          <div key="{country.name}" className="card">
-            <img className="flag" src={country.flag} alt={country.name} />
-            <p className="name">{country.name}</p>
-          </div>
-        ))}
-        {/* <Country /> */}
-      </div>
-    </div>
+      <Switch>
+          <Route path="/casino">
+            <p>roullete</p>
+          </Route>
+          <Route path="/">
+          <SearchCountry loadAllCountries={ loadAllCountries} loadCountriesByFullName={loadCountriesByFullName} loadCountriesByPartialName={loadCountriesByPartialName} />
+            <div className="search-result">
+              {countries.map((country) => (
+                <div key="{country.name}" className="card">
+                  <img className="flag" src={country.flag} alt={country.name} />
+                  <p className="name">{country.name}</p>
+                </div>
+              ))}
+            </div>
+          </Route>
+        </Switch>
+      </Router>
+
   );
 }
 
