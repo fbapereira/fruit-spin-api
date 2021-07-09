@@ -1,0 +1,16 @@
+.login {
+  color: white;
+
+  input {
+    border-color: white !important;
+    color: white;
+
+    &::placeholder {
+      color: white;
+    }
+  }
+
+  .login {
+    border: white 1px solid;
+  }
+}

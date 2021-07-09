@@ -33,7 +33,7 @@ export const SearchCountry: React.FC<SearchCountryProps> = ({
   };
 
   return (
-    <div className="search-area">
+    <div className="search-country">
       <input
         className="field"
         onChange={updateSearch}

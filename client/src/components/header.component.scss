@@ -2,26 +2,36 @@ $blue: #4081EC;
 $green: #32A350;
 
 .header {
-    margin: 1rem auto 0;
-    width: 80%;
-    display: flex;
-    justify-content: flex-end;
+    .menu {
+        margin: 1rem auto 0;
+        width: 80%;
+        display: flex;
+        justify-content: flex-end;
 
-    .button {
-        margin-left: 1rem;
-        border-radius: .3rem .3rem 0 0;
+        .button {
+            margin-left: 1rem;
+
+            &.open {
+                border-radius: .3rem .3rem 0 0;
+            }
+        }
+    }
+
+
+    .dialog {
+        width: 20rem;
+        margin-right: 10%;
+        right: 0;
+        position: absolute;
+        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+
+        &.login-area {
+            background-color: $green;
+        }
+
+        &.sign-in-area {
+            background-color: $blue;
+        }
     }
 }
-
-.login-area {
-    width: 20rem;
-    height: 30rem;
-    background-color: $green;
-    margin-right: 10%;
-    right: 0;
-    position: absolute;
-    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
-
-}
-
-

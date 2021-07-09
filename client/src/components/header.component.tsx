@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import './header.component.scss';
+import { Login } from './login.component'
+import { SignIn } from './sign-in.component'
+
+
 
 export const Header = () => {
-    let openDialog: string = 'none';
-
-    const changeDialog = () => {
-        debugger;
-        openDialog = 'login'
-    }
+    const [dialog, setDialog] = useState("");
 
     return (
-        <div>
-            <div className="header">
-                <button onClick={ changeDialog } className="button green">Login</button>
-                <button onClick={ (e) => { openDialog = 'signin' }} className="button blue">Sign In</button>
+        <div className="header">
+            <div className="menu">
+                <button onClick={ () => setDialog('login') } className={`button green  ${dialog === 'login' ? 'open' : ''} `}>Login</button>
+                <button onClick={ () => setDialog('singIn') } className={`button blue ' ${dialog === 'singIn' ? 'open' : ''} `}>Sign In</button>
             </div>
-            { openDialog === 'login' ?  <div className="login-area">test</div> : <p>test</p> }
-            { openDialog === 'signin' && <div className="signin-area">test</div> }
+            { dialog === 'login' && <div className="dialog login-area">
+                <Login />
+            </div> }
+            { dialog === 'singIn' && <div className="dialog sign-in-area">
+                <SignIn />
+            </div> }
         </div>
     );
 };
