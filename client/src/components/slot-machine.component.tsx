@@ -1,26 +1,25 @@
-import "./slot-machine.component.scss";
-import { ReactComponent as AppleCard } from "../assets/apple.svg";
-import { ReactComponent as BananaCard } from "../assets/banana.svg";
-import { ReactComponent as CherryCard } from "../assets/cherry.svg";
-import { ReactComponent as LemonCard } from "../assets/lemon.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { spin } from "../actions/slot-machine.action";
-import { RootReducer } from "../store";
+import "./slot-machine.component.scss"
+import { ReactComponent as AppleCard } from "../assets/apple.svg"
+import { ReactComponent as BananaCard } from "../assets/banana.svg"
+import { ReactComponent as CherryCard } from "../assets/cherry.svg"
+import { ReactComponent as LemonCard } from "../assets/lemon.svg"
+import { useDispatch, useSelector } from "react-redux"
+import { spin } from "../actions/slot-machine.action"
+import { RootReducer } from "../store"
 
 export const SlotMachine = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const slotMachineItems = useSelector<
-    RootReducer,
-    RootReducer["slotMachineReducer"]["slotMachineItems"]
-  >(({ slotMachineReducer: { slotMachineItems } }) => {
-    console.log(slotMachineItems);
-    return slotMachineItems;
-  });
+  const slotMachineItems = useSelector<RootReducer, RootReducer["slotMachineReducer"]["slotMachineItems"]>(
+    ({ slotMachineReducer: { slotMachineItems } }) => {
+      console.log(slotMachineItems)
+      return slotMachineItems
+    },
+  )
 
   const onSpinClick = () => {
-    dispatch(spin());
-  };
+    dispatch(spin())
+  }
 
   return (
     <div className="slot-machine">
@@ -54,5 +53,5 @@ export const SlotMachine = () => {
         <div className="control" onClick={onSpinClick}></div>
       </div>
     </div>
-  );
-};
+  )
+}

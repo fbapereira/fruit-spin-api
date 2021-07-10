@@ -1,93 +1,92 @@
-$green: #32A350;
-$red: #E34133;
-$blue: #4081EC;
-$yellow: #F3B605;
-$off-white: #F7F7F7;
+$green: #32a350;
+$red: #e34133;
+$blue: #4081ec;
+$yellow: #f3b605;
+$off-white: #f7f7f7;
 
 body {
-    background-color: $off-white;
+  background-color: $off-white;
 }
 
 .search-result {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
-    .card {
-        width: 10rem;
-        background: white;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        border-radius: .3rem;
-        overflow: hidden;
-        margin-bottom: 1rem;
+  .card {
+    width: 10rem;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
 
-        .flag {
-            width: 100%
-        }
-
-        .name {
-            margin: 0;
-            padding: 1rem;
-            text-align: center;
-        }
+    .flag {
+      width: 100%;
     }
+
+    .name {
+      margin: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+  }
 }
 
-
 .field {
-    width: 100%;
-    outline: 0;
-    border-width: 0 0 2px;
-    border-color: $blue;
-    margin-bottom: 1rem;
-    height: 2rem;
-    background-color: transparent;
+  width: 100%;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: $blue;
+  margin-bottom: 1rem;
+  height: 2rem;
+  background-color: transparent;
 
-    &:focus {
-        border-color: $green
-    }
+  &:focus {
+    border-color: $green;
+  }
 }
 
 .button {
-    margin: 0;
-    padding: 1rem;
-    border: 0;
-    color: $off-white;
-    border-radius: .3rem;
-    cursor: pointer;
-    text-decoration: none;
+  margin: 0;
+  padding: 1rem;
+  border: 0;
+  color: $off-white;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  text-decoration: none;
 
-    &.green {
-        background-color: $green;
+  &.green {
+    background-color: $green;
 
-        &:hover {
-            background-color: darken($green, 3);
-        }
+    &:hover {
+      background-color: darken($green, 3);
     }
+  }
 
-    &.red {
-        background-color: $red;
+  &.red {
+    background-color: $red;
 
-        &:hover {
-            background-color: darken($red, 5);
-        }
+    &:hover {
+      background-color: darken($red, 5);
     }
+  }
 
-    &.blue {
-        background-color: $blue;
+  &.blue {
+    background-color: $blue;
 
-        &:hover {
-            background-color: darken($blue, 3);
-        }
+    &:hover {
+      background-color: darken($blue, 3);
     }
+  }
 
-    &.yellow {
-        background-color: $yellow;
+  &.yellow {
+    background-color: $yellow;
 
-        &:hover {
-            background-color: darken($yellow, 3);
-        }
+    &:hover {
+      background-color: darken($yellow, 3);
     }
+  }
 }

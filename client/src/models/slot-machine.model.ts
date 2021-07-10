@@ -6,5 +6,5 @@ export enum SlotMachineItem {
 }
 
 export interface SlotMachine {
-  reels: SlotMachineItem[][];
+  reels: SlotMachineItem[][]
 }

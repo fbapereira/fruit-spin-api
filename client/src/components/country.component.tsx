@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export const Country = () => {
   return (
@@ -7,5 +7,5 @@ export const Country = () => {
         <button className="button green">Login</button>
       </div>
     </div>
-  );
-};
+  )
+}

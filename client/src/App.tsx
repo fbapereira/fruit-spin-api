@@ -1,39 +1,33 @@
-import React from "react";
-import "./App.scss";
-import { SearchCountry } from "./components/search-country.component";
-import { useDispatch, useSelector } from "react-redux";
-import { Header } from "./components/header.component";
-import {
-  getAllCountries,
-  searchCountryFullName,
-  searchCountryPartialName,
-} from "./actions/country.actions";
-import { SlotMachine } from "./components/slot-machine.component";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { RootReducer } from "./store";
+import React from "react"
+import "./App.scss"
+import { SearchCountry } from "./components/search-country.component"
+import { useDispatch, useSelector } from "react-redux"
+import { Header } from "./components/header.component"
+import { getAllCountries, searchCountryFullName, searchCountryPartialName } from "./actions/country.actions"
+import { SlotMachine } from "./components/slot-machine.component"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { RootReducer } from "./store"
 
 function App() {
-  const countries = useSelector<
-    RootReducer,
-    RootReducer["countryReducer"]["countries"]
-  >(({ countryReducer: { countries } }) => countries);
-  const token = useSelector<
-    RootReducer,
-    RootReducer["authenticationReducer"]["token"]
-  >(({ authenticationReducer: { token } }) => token);
+  const countries = useSelector<RootReducer, RootReducer["countryReducer"]["countries"]>(
+    ({ countryReducer: { countries } }) => countries,
+  )
+  const token = useSelector<RootReducer, RootReducer["authenticationReducer"]["token"]>(
+    ({ authenticationReducer: { token } }) => token,
+  )
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const loadAllCountries = () => {
-    dispatch(getAllCountries());
-  };
+    dispatch(getAllCountries())
+  }
 
   const loadCountriesByFullName = (search: string) => {
-    dispatch(searchCountryFullName(search));
-  };
+    dispatch(searchCountryFullName(search))
+  }
 
   const loadCountriesByPartialName = (search: string) => {
-    dispatch(searchCountryPartialName(search));
-  };
+    dispatch(searchCountryPartialName(search))
+  }
 
   return (
     <Router>
@@ -61,7 +55,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
