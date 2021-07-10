@@ -1,25 +1,26 @@
-import { ChangeEvent, useState } from "react"
-import { useDispatch } from "react-redux"
-import { loginUser } from "../actions/authentication.action"
-import "./login.component.scss"
+import "./login.component.scss";
+import { ChangeEvent, ReactElement, useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
 
-export const Login = () => {
-  const dispatch = useDispatch()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+import { loginUser } from "../actions/authentication.action";
 
-  const updateEmail = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)
+export const Login = (): ReactElement => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const updatePassword = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)
+  const updateEmail = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
+  const updatePassword = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
 
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!email || !password) {
-      alert("All fields are mandatory")
-      return
+      toast.error("All fields are mandatory");
+      return;
     }
-    dispatch(loginUser({ user: { email, password } }))
-  }
+    dispatch(loginUser({  email, password }));
+  };
 
   return (
     <div className="login">
@@ -33,10 +34,10 @@ export const Login = () => {
           value={password}
           onChange={updatePassword}
         ></input>
-        <button type="submit" className="button green login">
+        <button type="submit" className="button green login-button">
           Login
         </button>
       </form>
     </div>
-  )
-}
+  );
+};

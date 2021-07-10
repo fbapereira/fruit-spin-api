@@ -1,28 +1,30 @@
-import { ChangeEvent, useState } from "react"
-import { useDispatch } from "react-redux"
-import { createUser } from "../actions/authentication.action"
-import "./sign-in.component.scss"
+import { ChangeEvent, ReactElement, useState } from "react";
+import { useDispatch } from "react-redux";
 
-export const SignIn = () => {
-  const dispatch = useDispatch()
-  const [email, setEmail] = useState("")
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
+import { createUser } from "../actions/authentication.action";
 
-  const updateEmail = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)
+import "./sign-in.component.scss";
 
-  const updateName = (event: ChangeEvent<HTMLInputElement>) => setName(event.target.value)
+export const SignIn = (): ReactElement => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
 
-  const updatePassword = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)
+  const updateEmail = (event: ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
+
+  const updateName = (event: ChangeEvent<HTMLInputElement>) => setName(event.target.value);
+
+  const updatePassword = (event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
 
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!email || !password || !name) {
-      alert("All fields are mandatory")
-      return
+      alert("All fields are mandatory");
+      return;
     }
-    dispatch(createUser({ user: { email, password, name } }))
-  }
+    dispatch(createUser({ email, password, name }));
+  };
 
   return (
     <div className="sing-in">
@@ -37,10 +39,10 @@ export const SignIn = () => {
           value={password}
           onChange={updatePassword}
         ></input>
-        <button type="submit" className="button blue sign-in">
+        <button type="submit" className="button blue sign-in-button">
           Sign in
         </button>
       </form>
     </div>
-  )
-}
+  );
+};

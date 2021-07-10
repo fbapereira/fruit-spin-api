@@ -1,13 +1,12 @@
-$blue: #4081ec;
-$green: #32a350;
+@import "../variables.scss";
 
 .header {
   .menu {
-    margin: 1rem auto 0;
-    width: 80%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem auto 0;
+  width: 80%;
 
     .button {
       margin-left: 1rem;
@@ -24,12 +23,12 @@ $green: #32a350;
   }
 
   .dialog {
-    width: 20rem;
-    margin-right: 10%;
-    right: 0;
-    position: absolute;
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+    margin-right: 10%;
     padding: 1rem;
+    position: absolute;
+    right: 0;
+    width: 20rem;
 
     &.login-area {
       background-color: $green;

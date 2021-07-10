@@ -1,25 +1,25 @@
-import "./slot-machine.component.scss"
-import { ReactComponent as AppleCard } from "../assets/apple.svg"
-import { ReactComponent as BananaCard } from "../assets/banana.svg"
-import { ReactComponent as CherryCard } from "../assets/cherry.svg"
-import { ReactComponent as LemonCard } from "../assets/lemon.svg"
-import { useDispatch, useSelector } from "react-redux"
-import { spin } from "../actions/slot-machine.action"
-import { RootReducer } from "../store"
+import "./slot-machine.component.scss";
+import { ReactElement } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-export const SlotMachine = () => {
-  const dispatch = useDispatch()
+import { RootReducer } from "../store";
+import { spin } from "../actions/slot-machine.action";
+
+import { ReactComponent as AppleCard } from "../assets/apple.svg";
+import { ReactComponent as BananaCard } from "../assets/banana.svg";
+import { ReactComponent as CherryCard } from "../assets/cherry.svg";
+import { ReactComponent as LemonCard } from "../assets/lemon.svg";
+
+export const SlotMachine = (): ReactElement => {
+  const dispatch = useDispatch();
+  const onSpinClick = () => dispatch(spin());
 
   const slotMachineItems = useSelector<RootReducer, RootReducer["slotMachineReducer"]["slotMachineItems"]>(
     ({ slotMachineReducer: { slotMachineItems } }) => {
-      console.log(slotMachineItems)
-      return slotMachineItems
-    },
-  )
-
-  const onSpinClick = () => {
-    dispatch(spin())
-  }
+      console.log(slotMachineItems);
+      return slotMachineItems;
+    }
+  );
 
   return (
     <div className="slot-machine">
@@ -36,13 +36,13 @@ export const SlotMachine = () => {
               <div className="card">
                 {(() => {
                   if (slotMachineItem.toString() === "lemon") {
-                    return <LemonCard />
+                    return <LemonCard />;
                   } else if (slotMachineItem.toString() === "apple") {
-                    return <AppleCard />
+                    return <AppleCard />;
                   } else if (slotMachineItem.toString() === "banana") {
-                    return <BananaCard />
+                    return <BananaCard />;
                   } else {
-                    return <CherryCard />
+                    return <CherryCard />;
                   }
                 })()}
               </div>
@@ -53,5 +53,5 @@ export const SlotMachine = () => {
         <div className="control" onClick={onSpinClick}></div>
       </div>
     </div>
-  )
-}
+  );
+};

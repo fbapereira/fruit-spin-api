@@ -1,8 +1,4 @@
-$green: #32a350;
-$red: #e34133;
-$blue: #4081ec;
-$yellow: #f3b605;
-$off-white: #f7f7f7;
+@import "./variables.scss";
 
 body {
   background-color: $off-white;

@@ -1,5 +1,5 @@
-import { CountryAction } from "../actions/country.actions"
-import { Country } from "../models/country.model"
+import { CountryAction } from "../actions/country.actions";
+import { Country } from "../models/country.model";
 
 export interface CountryState {
   search: string
@@ -8,16 +8,16 @@ export interface CountryState {
 
 export const initialState = {
   search: "",
-  countries: [],
-}
+  countries: []
+};
 
-export const countryReducer = (state: CountryState = initialState, action: CountryAction) => {
+export const countryReducer = (state: CountryState = initialState, action: CountryAction): CountryState => {
   switch (action.type) {
     case "ADD_COUNTRY": {
-      return { ...state, countries: action.payload.countries }
+      return { ...state, countries: action.payload };
     }
     default: {
-      return state
+      return state;
     }
   }
-}
+};

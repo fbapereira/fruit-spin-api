@@ -1,16 +1,18 @@
+@import "../variables.scss";
+
 .login {
-  color: white;
+  color: $off-white;
 
   input {
-    border-color: white !important;
-    color: white;
+    border-color: $off-white !important;
+    color: $off-white;
 
     &::placeholder {
-      color: white;
+      color: $off-white;
     }
   }
 
-  .login {
-    border: white 1px solid;
+  .login-button {
+    border: $off-white 1px solid;
   }
 }

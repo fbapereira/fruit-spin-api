@@ -1,5 +1,5 @@
-import React, { ChangeEvent, useState } from "react"
-import "./search-country.component.scss"
+import "./search-country.component.scss";
+import React, { ChangeEvent, useState } from "react";
 
 interface SearchCountryProps {
   loadAllCountries(): void
@@ -10,26 +10,26 @@ interface SearchCountryProps {
 export const SearchCountry: React.FC<SearchCountryProps> = ({
   loadAllCountries,
   loadCountriesByFullName,
-  loadCountriesByPartialName,
+  loadCountriesByPartialName
 }) => {
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
-  const updateSearch = (event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)
+  const updateSearch = (event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value);
 
   const onLoadAllCountriesClick = () => {
-    loadAllCountries()
-    setSearch("")
-  }
+    loadAllCountries();
+    setSearch("");
+  };
 
   const onLoadByFullNameClick = () => {
-    loadCountriesByFullName(search)
-    setSearch("")
-  }
+    loadCountriesByFullName(search);
+    setSearch("");
+  };
 
   const onLoadByPartialNameClick = () => {
-    loadCountriesByPartialName(search)
-    setSearch("")
-  }
+    loadCountriesByPartialName(search);
+    setSearch("");
+  };
 
   return (
     <div className="search-country">
@@ -53,5 +53,5 @@ export const SearchCountry: React.FC<SearchCountryProps> = ({
         </button>
       </div>
     </div>
-  )
-}
+  );
+};

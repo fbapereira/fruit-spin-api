@@ -1,16 +1,18 @@
+@import "../variables.scss";
+
 .sing-in {
-  color: white;
+  color: $off-white;
 
   input {
-    border-color: white !important;
-    color: white;
+    border-color: $off-white;
+    color: $off-white;
 
     &::placeholder {
-      color: white;
+      color: $off-white;
     }
   }
 
-  .sign-in {
-    border: white 1px solid;
+  .sign-in-button {
+    border: $off-white 1px solid;
   }
 }
