@@ -1,8 +1,8 @@
 export enum SlotMachineItem {
-  cherry = 'cherry',
-  lemon = 'lemon',
-  apple = 'apple',
-  banana = 'banana',
+  cherry = 0,
+  lemon = 1,
+  apple = 2,
+  banana = 3,
 }
 
 export interface SlotMachine {

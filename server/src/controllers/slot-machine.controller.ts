@@ -10,6 +10,7 @@ const getSpin = async (req: Request, res: Response): Promise<Response> => {
   try {
     const userId = AuthorizationService.authenticate(req);
     if (!userId) return res.status(401).json({ message: 'Invalid Token' });
+// refact to return coins 
 
     const isWalletOperationSuccessful = await UserService.alterWallet(userId, appConfig.spinPrice * -1);
     if (!isWalletOperationSuccessful) return res.status(500).json({ message: 'Insufficient founds' });

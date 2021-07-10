@@ -34,7 +34,7 @@ const login = async (req: Request, res: Response): Promise<Response> => {
     if (!userSnapshot.empty && compareSync(password, userSnapshot.docs[0].data().password)) {
       const id = userSnapshot.docs[0].id;
       const token = sign({ id }, bCryptSecret, { expiresIn: 86400 });
-      res.status(200).json({ auth: true, token });
+      res.status(200).json({ auth: true, user: userSnapshot.docs[0].data(), token });
     } else {
       res.status(401).json({ auth: false });
     }

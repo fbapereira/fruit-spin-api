@@ -1,7 +1,10 @@
 import { ChangeEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import { createUser } from "../actions/authentication.action";
 import "./sign-in.component.scss";
 
 export const SignIn = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -15,12 +18,13 @@ export const SignIn = () => {
   const updatePassword = (event: ChangeEvent<HTMLInputElement>) =>
     setPassword(event.target.value);
 
-  const handleSubmit = () => {
+  const handleSubmit = async(event: React.FormEvent) => {
+    event.preventDefault();
     if (!email || !password || !name) {
       alert("All fields are mandatory");
       return;
     }
-    alert("Welcome");
+    dispatch(createUser({user : {email, password, name}}))
   };
 
   return (

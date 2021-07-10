@@ -1,8 +1,11 @@
 import { ChangeEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../actions/authentication.action";
 import "./login.component.scss";
 
 
 export const Login = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,12 +15,14 @@ export const Login = () => {
   const updatePassword = (event: ChangeEvent<HTMLInputElement>) =>
     setPassword(event.target.value);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     if (!email || !password) {
       alert('All fields are mandatory')
       return;
     }
-    alert('Welcome')
+    dispatch(loginUser({user : { email, password }}))
+    
   };
 
   return (

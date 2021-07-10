@@ -2,21 +2,25 @@ import React from "react";
 import "./App.scss";
 import { SearchCountry } from "./components/search-country.component";
 import { useDispatch, useSelector } from "react-redux";
-import { CountryState } from "./reducers/country.reducer";
 import { Header } from "./components/header.component";
-import { getAllCountries, searchCountryFullName, searchCountryPartialName } from "./actions/country.actions";
-import { SlotMachine } from './components/slot-machine.component';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+  getAllCountries,
+  searchCountryFullName,
+  searchCountryPartialName,
+} from "./actions/country.actions";
+import { SlotMachine } from "./components/slot-machine.component";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { RootReducer } from "./store";
 
 function App() {
-  const countries = useSelector<CountryState, CountryState["countries"]>(
-    ({ countries }) => countries
-  );
+  const countries = useSelector<
+    RootReducer,
+    RootReducer["countryReducer"]["countries"]
+  >(({ countryReducer: { countries } }) => countries);
+  const token = useSelector<
+    RootReducer,
+    RootReducer["authenticationReducer"]["token"]
+  >(({ authenticationReducer: { token } }) => token);
 
   const dispatch = useDispatch();
   const loadAllCountries = () => {
@@ -31,29 +35,32 @@ function App() {
     dispatch(searchCountryPartialName(search));
   };
 
-
   return (
     <Router>
-
       <Header />
       <Switch>
-          <Route path="/casino">
-            <SlotMachine />
-          </Route>
-          <Route path="/">
-          <SearchCountry loadAllCountries={ loadAllCountries} loadCountriesByFullName={loadCountriesByFullName} loadCountriesByPartialName={loadCountriesByPartialName} />
-            <div className="search-result">
-              {countries.map((country) => (
-                <div key="{country.name}" className="card">
+        <Route path="/casino">
+          <SlotMachine />
+        </Route>
+        <Route path="/">
+          <SearchCountry
+            loadAllCountries={loadAllCountries}
+            loadCountriesByFullName={loadCountriesByFullName}
+            loadCountriesByPartialName={loadCountriesByPartialName}
+          />
+          a{token}a
+          <div className="search-result">
+            {countries &&
+              countries.map((country) => (
+                <div key={country.name} className="card">
                   <img className="flag" src={country.flag} alt={country.name} />
                   <p className="name">{country.name}</p>
                 </div>
               ))}
-            </div>
-          </Route>
-        </Switch>
-      </Router>
-
+          </div>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

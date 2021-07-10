@@ -3,14 +3,19 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {store} from "./store";
+import { store } from "./store";
 import { Provider } from "react-redux";
-
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+  
+axios.defaults.baseURL = "http://localhost:6060";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
+      <ToastContainer />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

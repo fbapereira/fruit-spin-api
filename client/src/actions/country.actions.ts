@@ -3,8 +3,6 @@ import { ThunkAction } from "redux-thunk";
 import axios from 'axios';
 import { CountryState } from "../reducers/country.reducer";
 
-axios.defaults.baseURL = 'http://localhost:6060';
-
 export type CountryAction = { type: "ADD_COUNTRY", payload: AddCountryPayload };
 
 export const getAllCountries = (): ThunkAction<void, CountryState, unknown, CountryAction> => {
